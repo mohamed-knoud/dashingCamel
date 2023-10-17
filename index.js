@@ -3,8 +3,6 @@
 const smartcar = require('smartcar');
 const express = require('express');
 const session = require('express-session');
-const https = require('https');
-const axios = require('axios');
 
 const app = express();
 app.use(
@@ -65,7 +63,6 @@ app.get('/vehicle', async function(req, res) {
       });
       
     }
-    // console.log(`https://connect.smartcar.com/oauth/reauthenticate?response_type=vehicle_id&client_id=91d33940-bed0-4db3-93f3-4e31b5c26760&vehicle_id=${vehicles[0]}&redirect_uri=http://localhost:3000/exchange&state=0facda3319`)
     res.redirect('/');
 
 })

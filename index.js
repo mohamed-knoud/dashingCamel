@@ -41,7 +41,7 @@ app.get('/vehicle', async function(req, res) {
 
     const { vehicles } = await smartcar.getVehicles(req.session.accessToken);
 
-    const v1 = new smartcar.Vehicle(vehicles[0],req.session.accessToken)
+    const v1 = new smartcar.Vehicle(vehicles[0],req.session.accessToken);
     
     // 
     try{
@@ -75,9 +75,10 @@ app.use(express.static('public')); // Serve static files from the "public" direc
 
 app.get('/', (req, res) => {
     if(data){
-  res.render('ind', { data });}
+  res.render('ind', { data });
+    }
     else{
-        res.redirect('/login')
+        res.redirect('/login');
     }// Render the "index.ejs" template with data
 });
 

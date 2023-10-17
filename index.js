@@ -66,7 +66,7 @@ app.set('views', path.join(__dirname, 'views'));
 app.use(express.static('public')); // Serve static files from the "public" directory
 
 app.get('/', (req, res) => {
-    if(data){
+    if(Object.keys(data).length === 0){
   res.render('preview.ejs', { data });
     }
     else{

@@ -45,7 +45,7 @@ app.get('/vehicle', async function(req, res) {
     
     // 
     try{
-      console.log(await v1.lockStatus());
+      // console.log(await v1.lockStatus());
       data = {
         fuel :  await v1.fuel(),
         location :  await v1.location(),
@@ -66,7 +66,7 @@ app.get('/vehicle', async function(req, res) {
       
     }
     // console.log(`https://connect.smartcar.com/oauth/reauthenticate?response_type=vehicle_id&client_id=91d33940-bed0-4db3-93f3-4e31b5c26760&vehicle_id=${vehicles[0]}&redirect_uri=http://localhost:3000/exchange&state=0facda3319`)
-    // res.redirect('/');
+    res.redirect('/');
 
 })
 

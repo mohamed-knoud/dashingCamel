@@ -4,13 +4,7 @@ const smartcar = require('smartcar');
 const express = require('express');
 
 const app = express();
-app.use(
-    session({
-      secret: 'zAJ_gK*3MF}-5P4jthv]D9;A(3m9@2h4', // Replace with a strong secret key
-      resave: false,
-      saveUninitialized: true,
-    })
-  );
+
 const port = 3000;
 
 const client = new smartcar.AuthClient({

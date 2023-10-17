@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Welcome to Dashing Camel</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body>
+    <header>
+        <h1>Welcome to Dashing Camel</h1>
+    </header>
+    <main>
+        <section class="car-listing">
+            <article class="car-card">
+                <p><span style="font-weight: bold;">ATTRIBUTES</span> <br/><br/> MAKE : <%= data.attributes.make %> <br/><br/> MODEL : <%= data.attributes.model %> <br></br/> YEAR : <%= data.attributes.year %><br></br/> VIN : <%= data.vin.vin %></p>
+            </article>
+        </section>
+        <section class="car-listing">
+            <article class="car-card">
+                <p><span style="font-weight: bold;">FUEL INFORMATIONS</span> <br/><br/> Range : <%= data.fuel.range %> meters <br/><br/> Percent Remaining : <%= data.fuel.percentRemaining*100 %>%  <br/><br/>Amount Remaining : <%= data.fuel.amountRemaining %> liters</p>    
+            </article>
+        </section>
+        <section class="car-listing">
+            <article class="car-card">
+                <p><span style="font-weight: bold;">LOCATION</span> <br/><br/> Latitude : <%= data.location.latitude %>° <br/><br/> Longitude : <%= data.location.longitude %>°</p>
+            </article>
+        </section>
+        <section class="car-listing">
+            <article class="car-card">
+                <p><span style="font-weight: bold;">Odometer(DISTANCE)</span> : <%= data.odometer.distance %> Km</p>
+            </article>
+        </section>
+    </main>
+</body>
+</html>

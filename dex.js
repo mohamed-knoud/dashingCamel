@@ -77,7 +77,7 @@ app.get('/', (req, res) => {
     if(data){
   res.render('ind', { data });}
     else{
-        res.redirect(/login)
+        res.redirect('/login')
     }// Render the "index.ejs" template with data
 });
 

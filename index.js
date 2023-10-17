@@ -60,11 +60,13 @@ app.get('/vehicle', async function(req, res) {
 })
 
 app.set('view engine', 'ejs'); // Set the view engine to EJS
+app.set('views', path.join(__dirname, 'views'));
+
 app.use(express.static('public')); // Serve static files from the "public" directory
 
 app.get('/', (req, res) => {
     if(data){
-  res.render('preview', { data });
+  res.render('preview.ejs', { data });
     }
     else{
         res.redirect('/login');

@@ -64,7 +64,7 @@ app.use(express.static('public')); // Serve static files from the "public" direc
 
 app.get('/', (req, res) => {
     if(data){
-  res.render('ind', { data });
+  res.render('preview', { data });
     }
     else{
         res.redirect('/login');

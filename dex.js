@@ -74,7 +74,11 @@ app.set('view engine', 'ejs'); // Set the view engine to EJS
 app.use(express.static('public')); // Serve static files from the "public" directory
 
 app.get('/', (req, res) => {
-  res.render('ind', { data }); // Render the "index.ejs" template with data
+    if(data){
+  res.render('ind', { data });}
+    else{
+        res.redirect(/login)
+    }// Render the "index.ejs" template with data
 });
 
 app.use(express.static(__dirname + '/public'));

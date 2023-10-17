@@ -2,7 +2,6 @@
 
 const smartcar = require('smartcar');
 const express = require('express');
-const session = require('express-session');
 
 const app = express();
 app.use(
@@ -29,7 +28,6 @@ let access;
 
 app.get('/exchange', async function(req, res) {
     access = await client.exchangeCode(req.query.code);
-    req.session.accessToken = access.accessToken;
     res.redirect('/vehicle');
 });
 
@@ -37,9 +35,9 @@ let data = {}
 
 app.get('/vehicle', async function(req, res) {
 
-    const { vehicles } = await smartcar.getVehicles(req.session.accessToken);
+    const { vehicles } = await smartcar.getVehicles(access.accessToken);
 
-    const v1 = new smartcar.Vehicle(vehicles[0],req.session.accessToken);
+    const v1 = new smartcar.Vehicle(vehicles[0],access.accessToken);
     
     // 
     try{

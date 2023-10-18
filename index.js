@@ -11,7 +11,7 @@ const port = 3000;
 const client = new smartcar.AuthClient({
   clientId: '91d33940-bed0-4db3-93f3-4e31b5c26760', // fallback to SMARTCAR_CLIENT_ID ENV variable
   clientSecret: '866e3d10-60ce-4373-aba3-b2888639d498', // fallback to SMARTCAR_CLIENT_SECRET ENV variable
-  redirectUri: 'http://localhost:3000/exchange', // fallback to SMARTCAR_REDIRECT_URI ENV variable
+  redirectUri: 'https://dashing-camel.vercel.app:3000/exchange', // fallback to SMARTCAR_REDIRECT_URI ENV variable
   mode: 'test', // launch Smartcar Connect in test mode
 });
 
@@ -45,7 +45,7 @@ app.get('/vehicle', async function(req, res) {
         vin : await v1.vin(),
       };
     }catch{
-      const url = `https://connect.smartcar.com/oauth/reauthenticate?response_type=vehicle_id&client_id=91d33940-bed0-4db3-93f3-4e31b5c26760&vehicle_id=${vehicles[0]}&redirect_uri=http://localhost:3000/exchange&state=0facda3319`; // Replace with the URL you want to connect to
+      const url = `https://connect.smartcar.com/oauth/reauthenticate?response_type=vehicle_id&client_id=91d33940-bed0-4db3-93f3-4e31b5c26760&vehicle_id=${vehicles[0]}&redirect_uri=https://dashing-camel.vercel.app:3000/exchange&state=0facda3319`; // Replace with the URL you want to connect to
       
       axios.get(url)
       .then((response) => {

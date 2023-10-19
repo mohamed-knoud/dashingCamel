@@ -86,6 +86,6 @@ app.listen(port, () => console.log(`Listening on port ${port}`));
 app.post('/api/request', (req, res) => {
   const filter = { userId: user_id }
   const connections = smartcar.getConnections('{amt}', filter)
-  res.json({ message: user_id });
+  res.redirect('/login');
 });
 

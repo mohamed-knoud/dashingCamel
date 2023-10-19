@@ -81,3 +81,11 @@ app.get('/style.css', (req, res) => {
 });
 
 app.listen(port, () => console.log(`Listening on port ${port}`));
+
+
+app.post('/api/request', (req, res) => {
+  const filter = { userId: 'smartcar-user-id' }
+  const connections = smartcar.getConnections('{amt}', filter)
+  res.json({ message: 'Request received!' });
+});
+

@@ -7,7 +7,11 @@ const session = require('express-session');
 
 
 const app = express();
-
+app.use(session({
+    secret: '8gB#9Sq:xPYhU2?9Q26;vBa(*7[3Th,m',
+    resave: false,
+    saveUninitialized: true,
+}));
 const port = 3000;
 
 const client = new smartcar.AuthClient({

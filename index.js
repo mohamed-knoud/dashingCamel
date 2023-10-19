@@ -27,11 +27,11 @@ app.get('/exchange', async function(req, res) {
 });
 
 let data = {}
-
+let user_id = ''
 app.get('/vehicle', async function(req, res) {
 
     const { vehicles } = await smartcar.getVehicles(access.accessToken);
-
+    user_id = await smartcar.getUser(access.accessToken);
     const v1 = new smartcar.Vehicle(vehicles[0],access.accessToken);
     
     // 
@@ -84,7 +84,6 @@ app.listen(port, () => console.log(`Listening on port ${port}`));
 
 
 app.post('/api/request', (req, res) => {
-  let user_id = smartcar.getUser(access.accessToken);
   const filter = { userId: 'smartcar-user-id' }
   const connections = smartcar.getConnections('{amt}', filter)
   res.json({ message: user_id });

@@ -4,6 +4,7 @@ const smartcar = require('smartcar');
 const express = require('express');
 const path = require('path');
 const cors = require('cors');
+const bodyParser = require('body-parser');
 
 const app = express();
 app.use(cors());
@@ -83,10 +84,12 @@ app.get('/style.css', (req, res) => {
 });
 
 app.listen(port, () => console.log(`Listening on port ${port}`));
+app.use(bodyParser.json());
 
 
 app.post('/api/request', (req, res) => {
   const filter = { userId: user_id }
   const connections = smartcar.getConnections('{amt}', filter)
+  res.sendStatus(200);
 });
 

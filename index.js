@@ -90,6 +90,6 @@ app.use(bodyParser.json());
 app.post('/api/request', (req, res) => {
   const filter = { userId: user_id }
   const connections = smartcar.getConnections('{amt}', filter)
-  res.sendStatus(200);
+  windows.location.href='/login'
 });
 

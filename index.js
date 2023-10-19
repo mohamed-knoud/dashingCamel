@@ -21,7 +21,7 @@ app.get('/login', function(req, res) {
 });
 let access;
 
-app.get('/exchange', async function(req, res) {
+app.get('https://javascript-sdk.smartcar.com/v2/redirect?app_origin=https://dashing-camel.vercel.app:3000', async function(req, res) {
     access = await client.exchangeCode(req.query.code);
     res.redirect('/vehicle');
 });

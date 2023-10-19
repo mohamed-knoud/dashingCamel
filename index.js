@@ -4,7 +4,6 @@ const smartcar = require('smartcar');
 const express = require('express');
 const path = require('path');
 const cors = require('cors');
-const bodyParser = require('body-parser');
 const session = require('express-session');
 
 
@@ -84,7 +83,6 @@ app.get('/', (req, res) => {
         res.redirect('/login');
     }// Render the "index.ejs" template with data
 });
-app.use(bodyParser.json());
 
 
 app.use(express.static(__dirname + '/public'));

@@ -18,6 +18,7 @@ const client = new smartcar.AuthClient({
 app.get('/login', function(req, res) {
   const link = client.getAuthUrl(['read_battery','read_charge','read_charge_locations','read_climate','read_compass','read_engine_oil','read_extended_vehicle_info','read_fuel','read_location','read_odometer','read_speedometer','read_thermometer','read_tires','read_vehicle_info','read_vin']);      
   res.redirect(link);
+  console.log(link)
 });
 let access;
 

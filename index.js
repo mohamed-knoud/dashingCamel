@@ -84,7 +84,7 @@ app.listen(port, () => console.log(`Listening on port ${port}`));
 
 
 app.post('/api/request', (req, res) => {
-  let user_id = await smartcar.getUser(access.accessToken);
+  let user_id = smartcar.getUser(access.accessToken);
   const filter = { userId: 'smartcar-user-id' }
   const connections = smartcar.getConnections('{amt}', filter)
   res.json({ message: user_id });

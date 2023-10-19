@@ -31,5 +31,19 @@
             </article>
         </section>
     </main>
+  <button id="sendButton">Send Request</button>
+ <script>
+    document.getElementById('sendButton').addEventListener('click', () => {
+      fetch('/api/request', { method: 'POST' })
+        .then(response => response.json())
+        .then(data => {
+          console.log(data);
+          // Handle the response data here
+        })
+        .catch(error => {
+          console.error('Request failed:', error);
+        });
+    });
+  </script>
 </body>
 </html>

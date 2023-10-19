@@ -7,17 +7,12 @@ const path = require('path');
 const app = express();
 
 const port = 3000;
-let currentUrl = ''
-
-
 
 app.get('/login', function(req, res) {
-  currentUrl = req.protocol + '://' + req.get('host') + req.originalUrl;
-  console.log(currentUrl)
   const client = new smartcar.AuthClient({
   clientId: '91d33940-bed0-4db3-93f3-4e31b5c26760', // fallback to SMARTCAR_CLIENT_ID ENV variable
   clientSecret: '866e3d10-60ce-4373-aba3-b2888639d498', // fallback to SMARTCAR_CLIENT_SECRET ENV variable
-  redirectUri: `${currentUrl}/exchange`, // fallback to SMARTCAR_REDIRECT_URI ENV variable
+  redirectUri: 'http://dashing-camel.vercel.app:3000/exchange', // fallback to SMARTCAR_REDIRECT_URI ENV variable
   mode: 'test', // launch Smartcar Connect in test mode
 });
   const link = client.getAuthUrl(['read_battery','read_charge','read_charge_locations','read_climate','read_compass','read_engine_oil','read_extended_vehicle_info','read_fuel','read_location','read_odometer','read_speedometer','read_thermometer','read_tires','read_vehicle_info','read_vin']);      

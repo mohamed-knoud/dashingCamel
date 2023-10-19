@@ -35,16 +35,10 @@
  <script>
     document.getElementById('sendButton').addEventListener('click', () => {
       // Example using the fetch API
-            fetch('/api/request', {
-              method: 'POST',
-              body: JSON.stringify({ action: 'someAction' }),
-              headers: {
-                'Content-Type': 'application/json',
-              },
-            })
+            fetch('/api/request')
               .then((response) => {
                 if (response.ok) {
-                  // Action was executed successfully
+                    windows.location.href='/login'
                 } else {
                   // Handle the error
                 }

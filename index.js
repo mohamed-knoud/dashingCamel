@@ -5,6 +5,8 @@ const express = require('express');
 const path = require('path');
 const cors = require('cors');
 const bodyParser = require('body-parser');
+const session = require('express-session');
+
 
 const app = express();
 app.use(cors());
@@ -35,6 +37,7 @@ app.get('/vehicle', async function(req, res) {
 
     const { vehicles } = await smartcar.getVehicles(access.accessToken);
     user_id = await smartcar.getUser(access.accessToken);
+    req.session.userId = user_id;
     const v1 = new smartcar.Vehicle(vehicles[0],access.accessToken);
     
     // 
@@ -87,7 +90,7 @@ app.listen(port, () => console.log(`Listening on port ${port}`));
 app.use(bodyParser.json());
 
 app.get('/api/request', (req, res) => {
-  const filter = { userId: user_id }
+  const filter = { userId: req.session.userId }
   const connections = smartcar.getConnections('{amt}', filter)
   res.redirect('/login')
 });

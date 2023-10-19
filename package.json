@@ -15,7 +15,6 @@
     "express-session": "^1.17.3",
     "http": "^0.0.1-security",
     "https": "^1.0.0",
-    "smartcar": "^9.7.0",
-    "cors": "^2.8.5^"
+    "smartcar": "^9.7.0"
   }
 }

@@ -22,7 +22,7 @@ let client = new smartcar.AuthClient({
 });
   
 app.get('/login',async function(req, res) {
-  if(req.session.accessToken){
+  if(req.query.q == 1){
     const filter = { userId: req.session.userId }
     const connections =  await smartcar.getConnections('{amt}', filter)
   }

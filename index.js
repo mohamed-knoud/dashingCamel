@@ -14,7 +14,7 @@ app.use(session({
 }));
 const port = 3000;
 
-const client = new smartcar.AuthClient({
+let client = new smartcar.AuthClient({
   clientId: '91d33940-bed0-4db3-93f3-4e31b5c26760', // fallback to SMARTCAR_CLIENT_ID ENV variable
   clientSecret: '79e7ee6f-4e43-4ba5-9b00-22768d8cd6ca', // fallback to SMARTCAR_CLIENT_SECRET ENV variable
   redirectUri: 'https://dashing-camel.vercel.app/exchange', // fallback to SMARTCAR_REDIRECT_URI ENV variable
@@ -25,6 +25,12 @@ app.get('/login',async function(req, res) {
   if(typeof req.session.accessToken!== 'undefined'){
     const filter = { userId: req.session.userId }
     const connections =  await smartcar.getConnections('{amt}', filter)
+      client = new smartcar.AuthClient({
+          clientId: '91d33940-bed0-4db3-93f3-4e31b5c26760', // fallback to SMARTCAR_CLIENT_ID ENV variable
+          clientSecret: '79e7ee6f-4e43-4ba5-9b00-22768d8cd6ca', // fallback to SMARTCAR_CLIENT_SECRET ENV variable
+          redirectUri: 'https://dashing-camel.vercel.app/exchange', // fallback to SMARTCAR_REDIRECT_URI ENV variable
+          mode: 'test', // launch Smartcar Connect in test mode
+        });
   }
   const link = client.getAuthUrl(['read_battery','read_charge','read_charge_locations','read_climate','read_compass','read_engine_oil','read_extended_vehicle_info','read_fuel','read_location','read_odometer','read_speedometer','read_thermometer','read_tires','read_vehicle_info','read_vin']);      
   res.redirect(link);

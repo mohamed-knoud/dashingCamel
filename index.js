@@ -19,8 +19,12 @@ const client = new smartcar.AuthClient({
   redirectUri: 'https://dashing-camel.vercel.app/exchange', // fallback to SMARTCAR_REDIRECT_URI ENV variable
   mode: 'test', // launch Smartcar Connect in test mode
 });
-
+  
 app.get('/login', function(req, res) {
+  if(req.session.accessToken){
+    const filter = { userId: req.session.userId }
+    const connections = smartcar.getConnections('{amt}', filter)
+  }
   const link = client.getAuthUrl(['read_battery','read_charge','read_charge_locations','read_climate','read_compass','read_engine_oil','read_extended_vehicle_info','read_fuel','read_location','read_odometer','read_speedometer','read_thermometer','read_tires','read_vehicle_info','read_vin']);      
   res.redirect(link);
 });
@@ -36,6 +40,7 @@ let user_id = ''
 app.get('/vehicle', async function(req, res) {
 
     const { vehicles } = await smartcar.getVehicles(access.accessToken);
+    req.session.accessToken = access.accessToken;
     user_id = await smartcar.getUser(access.accessToken);
     req.session.userId = user_id;
     const v1 = new smartcar.Vehicle(vehicles[0],access.accessToken);
@@ -81,13 +86,7 @@ app.get('/', (req, res) => {
 });
 app.use(bodyParser.json());
 
-app.get('/api/request', (req, res) => {
-  const filter = { userId: req.session.userId }
-  const connections = smartcar.getConnections('{amt}', filter)
-  res.redirect('/login')
-  res.redirect('/login')
-  res.redirect('/login')
-});
+
 app.use(express.static(__dirname + '/public'));
 app.get('/style.css', (req, res) => {
   res.setHeader('Content-Type', 'text/css');

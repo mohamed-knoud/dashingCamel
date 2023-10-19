@@ -11,7 +11,7 @@ const port = 3000;
 const client = new smartcar.AuthClient({
   clientId: '91d33940-bed0-4db3-93f3-4e31b5c26760', // fallback to SMARTCAR_CLIENT_ID ENV variable
   clientSecret: '79e7ee6f-4e43-4ba5-9b00-22768d8cd6ca', // fallback to SMARTCAR_CLIENT_SECRET ENV variable
-  redirectUri: 'https://javascript-sdk.smartcar.com/v2/redirect?app_origin=https://dashing-camel.vercel.app:3000/exchange', // fallback to SMARTCAR_REDIRECT_URI ENV variable
+  redirectUri: 'https://dashing-camel.vercel.app:3000/', // fallback to SMARTCAR_REDIRECT_URI ENV variable
   mode: 'test', // launch Smartcar Connect in test mode
 });
 

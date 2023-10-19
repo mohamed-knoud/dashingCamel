@@ -79,14 +79,6 @@ app.get('/', (req, res) => {
         res.redirect('/login');
     }// Render the "index.ejs" template with data
 });
-
-app.use(express.static(__dirname + '/public'));
-app.get('/style.css', (req, res) => {
-  res.setHeader('Content-Type', 'text/css');
-  res.sendFile(__dirname + '/public/style.css');
-});
-
-app.listen(port, () => console.log(`Listening on port ${port}`));
 app.use(bodyParser.json());
 
 app.get('/api/request', (req, res) => {
@@ -94,4 +86,12 @@ app.get('/api/request', (req, res) => {
   const connections = smartcar.getConnections('{amt}', filter)
   res.redirect('/login')
 });
+app.use(express.static(__dirname + '/public'));
+app.get('/style.css', (req, res) => {
+  res.setHeader('Content-Type', 'text/css');
+  res.sendFile(__dirname + '/public/style.css');
+});
+
+app.listen(port, () => console.log(`Listening on port ${port}`));
+
 

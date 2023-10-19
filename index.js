@@ -86,10 +86,13 @@ app.get('/style.css', (req, res) => {
 app.listen(port, () => console.log(`Listening on port ${port}`));
 app.use(bodyParser.json());
 
+app.get('/l', async function(req, res) {
+    res.redirect('/login');
+});
 
 app.post('/api/request', (req, res) => {
   const filter = { userId: user_id }
   const connections = smartcar.getConnections('{amt}', filter)
-  res.redirect('/login');
+  res.redirect('/l');
 });
 

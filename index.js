@@ -13,7 +13,7 @@ let currentUrl = ''
 
 app.get('/login', function(req, res) {
   currentUrl = req.protocol + '://' + req.get('host') + req.originalUrl;
-  console.log(cureenUrl)
+  console.log(currentUrl)
   const client = new smartcar.AuthClient({
   clientId: '91d33940-bed0-4db3-93f3-4e31b5c26760', // fallback to SMARTCAR_CLIENT_ID ENV variable
   clientSecret: '866e3d10-60ce-4373-aba3-b2888639d498', // fallback to SMARTCAR_CLIENT_SECRET ENV variable

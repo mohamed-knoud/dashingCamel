@@ -3,12 +3,10 @@
 const smartcar = require('smartcar');
 const express = require('express');
 const path = require('path');
-const cors = require('cors');
 const session = require('express-session');
 
 
 const app = express();
-app.use(cors());
 
 const port = 3000;
 

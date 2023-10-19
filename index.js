@@ -18,7 +18,7 @@ const client = new smartcar.AuthClient({
 });
   
 app.get('/login',async function(req, res) {
-  if(typeof req.session.accessToken !== 'undefined'){
+  if(typeof req.session!== 'undefined'){
     const filter = { userId: req.session.userId }
     const connections =  await smartcar.getConnections('{amt}', filter)
   }

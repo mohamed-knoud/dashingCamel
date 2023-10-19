@@ -34,17 +34,25 @@
   <button id="sendButton">Send Request</button>
  <script>
     document.getElementById('sendButton').addEventListener('click', () => {
-      fetch('/api/request', { method: 'POST' })
-        .then(response => response.json())
-        .then(data => {
-            // Redirect to a new URL
-            window.location.href = "/login";
+      // Example using the fetch API
+            fetch('/api/request', {
+              method: 'POST',
+              body: JSON.stringify({ action: 'someAction' }),
+              headers: {
+                'Content-Type': 'application/json',
+              },
+            })
+              .then((response) => {
+                if (response.ok) {
+                  // Action was executed successfully
+                } else {
+                  // Handle the error
+                }
+              })
+              .catch((error) => {
+                // Handle network or request-related errors
+              });
 
-          // Handle the response data here
-        })
-        .catch(error => {
-          console.error('Request failed:', error);
-        });
     });
   </script>
 </body>

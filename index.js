@@ -84,7 +84,8 @@ app.use(bodyParser.json());
 app.get('/api/request', (req, res) => {
   const filter = { userId: req.session.userId }
   const connections = smartcar.getConnections('{amt}', filter)
-  res.status(200).send('Signal received successfully.');
+  res.redirect('/login')
+  res.redirect('/login')
   res.redirect('/login')
 });
 app.use(express.static(__dirname + '/public'));
